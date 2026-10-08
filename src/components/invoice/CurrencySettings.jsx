@@ -1,0 +1,10 @@
+import { formatMoney, today } from '../../utils/formatters'
+export default function CurrencySettings({ currency, kind, onKindChange, onCurrencyChange, exchange, snapshot, locked, error }) {
+  return <section className="currency-settings" aria-label="Moneda y tipo de cambio"><div className="section-title"><div><h2>Moneda y tipo de cambio</h2><p>Al cambiar de moneda se convierten los precios unitarios de los ítems.</p></div></div><div className="form-grid"><label className="field">Moneda de la factura<select value={currency} onChange={e => onCurrencyChange(e.target.value)}><option value="USD">USD · Dólares</option><option value="CRC">CRC · Colones</option></select></label><label className="field">Tasa para convertir<select value={kind} disabled={locked} onChange={e => onKindChange(e.target.value)}><option value="venta">Venta</option><option value="compra">Compra</option></select></label></div>
+    {exchange.loading && !snapshot && <p role="status">Consultando tipo de cambio…</p>}
+    {snapshot && <div className="exchange-summary"><strong>1 USD = {formatMoney(snapshot.rate, 'CRC')}</strong><span>{snapshot.kind === 'venta' ? 'Venta' : 'Compra'} · Fecha de tasa: {snapshot.date} · Fuente: GoMeta</span>{locked && <small>Tasa fijada para esta factura. Se conserva al volver a cambiar de moneda.</small>}{snapshot.date !== today() && <p className="taxpayer-warning">La tasa recibida corresponde al {snapshot.date}; no es de hoy. Esta fecha quedará registrada en la factura.</p>}</div>}
+    {exchange.data && <p className="contact-note">Compra: {formatMoney(exchange.data.compra, 'CRC')} ({exchange.data.compraDate}) · Venta: {formatMoney(exchange.data.venta, 'CRC')} ({exchange.data.ventaDate})</p>}
+    {exchange.error && !snapshot && <div className="message error" role="alert">{exchange.error} Puedes registrar importes en la moneda seleccionada, pero no convertir precios sin una tasa.<button type="button" className="button secondary" onClick={exchange.retry}>Reintentar tipo de cambio</button></div>}
+    {error && <p className="message error" role="alert">{error}</p>}
+  </section>
+}

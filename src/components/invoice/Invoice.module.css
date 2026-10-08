@@ -1,0 +1,14 @@
+.invoice { background: #fff; color: #1b2a27; padding: 48px; max-width: 900px; margin: auto; font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
+.header { display: flex; justify-content: space-between; gap: 30px; padding-bottom: 32px; border-bottom: 2px solid #244d43; }
+.mark { background: #264e44; color: white; width: 42px; height: 42px; display: grid; place-items: center; font-size: 24px; border-radius: 10px; font-weight: 700; }
+.invoice h2 { margin: 12px 0 2px; font-size: 21px; }.invoice p { margin: 3px 0; }.document { text-align: right; }.document span,.customer>span { color: #657872; font-size: 11px; letter-spacing: 2px; }.document h1 { font-size: 21px; margin: 10px 0; }.customer { padding: 26px 0; }.customer h3 { margin: 7px 0; font-size: 17px; }
+.invoice table { width: 100%; border-collapse: collapse; table-layout: fixed; }.invoice th,.invoice td { border: 1px solid #dce3e0; padding: 12px; text-align: right; }.invoice th { background: #edf3ef; font-size: 11px; }.invoice th:first-child,.invoice td:first-child { text-align: left; width: 32%; }.invoice tr { break-inside: avoid; }
+.totals { width: 300px; max-width: 100%; margin: 24px 0 36px auto; }.totals div { display: flex; justify-content: space-between; gap: 15px; padding: 8px 0; }.totals dd { margin: 0; font-weight: 600; }.total { border-top: 1px solid #ccd8d2; font-size: 18px; color: #245c49; }.invoice footer { border-top: 1px solid #dce3e0; padding-top: 20px; color: #6b7772; }.invoice footer small { display: block; margin-top: 20px; font-size: 10px; }
+@media(max-width:600px) { .invoice { padding: 22px; }.header { gap: 12px; }.document h1 { font-size: 15px; }.invoice th,.invoice td { padding: 7px; } }
+@media print { .invoice { max-width: none; padding: 0; font-size: 10pt; }.invoice thead { display: table-header-group; }.header,.customer,.totals,.invoice footer { break-inside: avoid; } }
+
+.invoice p { color: #65746c; }.invoice th { color: #4b6255; }.invoice td { color: #1b2a27; }
+
+.fiscal { margin:20px 0; padding:14px; border:1px solid #dce3e0; background:#f6f8f6; font-size:11px; break-inside:avoid; }
+
+.brand { color:#12384b; margin-bottom:18px; }.brand img { width:36px; height:36px; }.brand span { font-size:12px; }.invoice th:nth-child(2) { width:10%; }.invoice th:nth-child(4) { width:13%; }

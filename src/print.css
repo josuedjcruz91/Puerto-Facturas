@@ -1,0 +1,7 @@
+@page { size: A4; margin: 14mm; }
+@media print {
+  .no-print, .app-footer { display: none !important; }
+  html, body, #root, .app-shell, .main-shell, main { display: block !important; width: auto !important; min-width: 0 !important; margin: 0 !important; padding: 0 !important; background: white !important; }
+  .invoice-document { border: 0 !important; box-shadow: none !important; margin: 0 !important; }
+  body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}
